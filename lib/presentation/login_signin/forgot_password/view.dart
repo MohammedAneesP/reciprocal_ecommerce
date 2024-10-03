@@ -7,7 +7,7 @@ import 'package:reciprocal_task/widgets/utils.dart';
 
 class ForgotPassword extends StatelessWidget {
   ForgotPassword({super.key});
-  TextEditingController forgotController = TextEditingController();
+  final TextEditingController forgotController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reciprocal_task/presentation/home_screen/view.dart';
 import 'package:reciprocal_task/presentation/login_signin/login_page/view.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -32,6 +31,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void toHome() {
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) =>  LoginPage()));
+        context, MaterialPageRoute(builder: (context) => LoginPage()));
   }
 }
