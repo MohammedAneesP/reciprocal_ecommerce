@@ -131,7 +131,7 @@ class LoginPage extends StatelessWidget {
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).push(
-                            MaterialPageRoute(
+                           CupertinoPageRoute(
                               builder: (context) => SignUpPage(),
                             ),
                           );

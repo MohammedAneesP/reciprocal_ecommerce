@@ -7,3 +7,6 @@ const kBlueThinText = TextStyle(color: kBlue, fontSize: 16, fontWeight: FontWeig
 
 const buttontextWhite = TextStyle(
     fontSize: 18, fontWeight: FontWeight.normal, color: kWhite);
+
+const buttontextBlack = TextStyle(
+    fontSize: 18, fontWeight: FontWeight.normal, color: kBlack);

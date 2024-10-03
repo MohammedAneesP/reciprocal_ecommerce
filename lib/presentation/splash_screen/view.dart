@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:reciprocal_task/presentation/login_signin/login_page/view.dart';
+import 'package:reciprocal_task/main.dart';
+import 'package:reciprocal_task/presentation/home_screen/view.dart';
+import 'package:reciprocal_task/presentation/landing%20page/view.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -19,18 +22,23 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Icon(Icons.shopping_bag_sharp, size: 50),
+        child: Icon(Icons.shopping_bag_sharp, size: 100),
       ),
     );
   }
 
   Future<void> goto() async {
     await Future.delayed(const Duration(seconds: 3));
-    toHome();
+    isViewed != 0 ? toLanding() : toHome();
+  }
+
+  void toLanding() {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const LandingPage()));
   }
 
   void toHome() {
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LoginPage()));
+        context, CupertinoPageRoute(builder: (context) => const HomeScreen()));
   }
 }

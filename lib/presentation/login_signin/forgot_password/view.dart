@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:reciprocal_task/constants/colors.dart';
 import 'package:reciprocal_task/constants/textstyle_const.dart';
+import 'package:reciprocal_task/domain/services/firebase_auth.dart';
 import 'package:reciprocal_task/presentation/login_signin/login_page/view.dart';
 import 'package:reciprocal_task/presentation/login_signin/widgets/text_form.dart';
 import 'package:reciprocal_task/widgets/utils.dart';
@@ -22,7 +24,6 @@ class ForgotPassword extends StatelessWidget {
         }
       },
       child: Scaffold(
-        // backgroundColor: Colors.lightBlue[50],
         body: SingleChildScrollView(
           child: SafeArea(
             child: Center(
@@ -74,11 +75,12 @@ class ForgotPassword extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () async {
                           if (formKey.currentState!.validate()) {
-                            // await FireBaseAuthMethods(FirebaseAuth.instance)
-                            //     .forgotPassword(
-                            //   anEmail: forgotController.text,
-                            //   context: context,
-                            // );
+                            await FirebaseAuthMethods(
+                                    anFireAuth: FirebaseAuth.instance)
+                                .forgotPassword(
+                              anEmail: forgotController.text,
+                              context: context,
+                            );
                             if (context.mounted) {
                               anSnackBarFunc(
                                   context: context,
