@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:reciprocal_task/constants/colors.dart';
+import 'package:reciprocal_task/presentation/bottom_nav/bottom_nav.dart';
 import 'package:reciprocal_task/presentation/home_screen/view.dart';
 import 'package:reciprocal_task/widgets/utils.dart';
 
@@ -46,7 +47,7 @@ class FirebaseAuthMethods {
           Navigator.pushReplacement(
             context,
             CupertinoPageRoute(
-              builder: (context) => const HomeScreen(),
+              builder: (context) => const BottomNav(),
             ),
           );
         }

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:reciprocal_task/constants/colors.dart';
 import 'package:reciprocal_task/constants/textstyle_const.dart';
+import 'package:reciprocal_task/presentation/bottom_nav/bottom_nav.dart';
 import 'package:reciprocal_task/presentation/home_screen/view.dart';
 import 'package:reciprocal_task/presentation/login_signin/login_page/view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -29,7 +30,7 @@ class LandingPage extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 CupertinoPageRoute(
-                  builder: (context) => const HomeScreen(),
+                  builder: (context) => const BottomNav(),
                 ),
               );
             },
@@ -43,7 +44,7 @@ class LandingPage extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(height: kHeight.height * 0.1),
-          Text(
+          const Text(
             "Welcome to Shoppie App",
             style: loginTitle,
           ),

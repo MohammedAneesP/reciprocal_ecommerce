@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:reciprocal_task/main.dart';
+import 'package:reciprocal_task/presentation/bottom_nav/bottom_nav.dart';
 import 'package:reciprocal_task/presentation/home_screen/view.dart';
 import 'package:reciprocal_task/presentation/landing%20page/view.dart';
 
@@ -39,6 +40,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void toHome() {
     Navigator.pushReplacement(
-        context, CupertinoPageRoute(builder: (context) => const HomeScreen()));
+        context, CupertinoPageRoute(builder: (context) => const BottomNav()));
   }
 }

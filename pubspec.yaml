@@ -33,7 +33,7 @@ dependencies:
   firebase_core: null
   flutter:
     sdk: flutter
-  shared_preferences: ^2.3.2
+  shared_preferences: 
 
 dev_dependencies:
   flutter_lints: ^3.0.0
