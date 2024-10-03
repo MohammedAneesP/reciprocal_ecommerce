@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "242111420987",
+    "project_id": "myshoppie-7dfa2",
+    "storage_bucket": "myshoppie-7dfa2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242111420987:android:b97acfdf0820cc94839a1e",
+        "android_client_info": {
+          "package_name": "reciprocal_task.coimbatore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsiE-DSicrTeK8UfL6u5g6QbOdwm8-aU8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
