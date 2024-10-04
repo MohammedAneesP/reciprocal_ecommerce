@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:reciprocal_task/main.dart';
 import 'package:reciprocal_task/presentation/bottom_nav/bottom_nav.dart';
-import 'package:reciprocal_task/presentation/home_screen/view.dart';
 import 'package:reciprocal_task/presentation/landing%20page/view.dart';
+
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -40,6 +41,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void toHome() {
     Navigator.pushReplacement(
-        context, CupertinoPageRoute(builder: (context) => const BottomNav()));
+        context, CupertinoPageRoute(builder: (context) =>  BottomNav()));
   }
 }

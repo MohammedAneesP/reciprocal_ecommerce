@@ -1,10 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:reciprocal_task/appliation/bottom_nav/bottom_nav_index_bloc.dart';
+import 'package:reciprocal_task/appliation/show_products/show_all_products_bloc.dart';
+
 import 'package:reciprocal_task/firebase_options.dart';
 import 'package:reciprocal_task/presentation/splash_screen/view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-int? isViewed ;
+int? isViewed;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,14 +23,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => BottomNavIndexBloc()),
+        BlocProvider(create: (context) => ShowAllProductsBloc()),
+       
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+          useMaterial3: true,
+        ),
+        debugShowCheckedModeBanner: false,
+        home: const SplashScreen(),
       ),
-      debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
     );
   }
 }
