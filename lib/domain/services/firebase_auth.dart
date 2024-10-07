@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:reciprocal_task/constants/colors.dart';
 import 'package:reciprocal_task/presentation/bottom_nav/bottom_nav.dart';
 import 'package:reciprocal_task/widgets/utils.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FirebaseAuthMethods {
   final FirebaseAuth anFireAuth;
@@ -43,10 +44,11 @@ class FirebaseAuthMethods {
         }
       } else {
         if (context.mounted) {
+          landingPageHandle();
           Navigator.pushReplacement(
             context,
             CupertinoPageRoute(
-              builder: (context) =>  BottomNav(),
+              builder: (context) => BottomNav(),
             ),
           );
         }
@@ -86,5 +88,11 @@ class FirebaseAuthMethods {
             context: context, aText: e.message.toString(), anColor: kRed);
       }
     }
+  }
+
+  landingPageHandle() async {
+    int isViewed = 0;
+    SharedPreferences anPreference = await SharedPreferences.getInstance();
+    anPreference.setInt("Landed", isViewed);
   }
 }

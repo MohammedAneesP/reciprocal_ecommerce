@@ -1,17 +1,16 @@
-
 import 'package:flutter/material.dart';
+import 'package:reciprocal_task/constants/colors.dart';
 
 class TheTextFormField extends StatelessWidget {
-  const TheTextFormField({
-    super.key,
-    required this.anController,
-    required this.returnText,
-    required this.anLabelText,
-    required this.isObscure,
-    required this.anPrefixIcon,
-    this.anSuffixIcon,
-    required this.keyInputType
-  });
+  const TheTextFormField(
+      {super.key,
+      required this.anController,
+      required this.returnText,
+      required this.anLabelText,
+      required this.isObscure,
+      required this.anPrefixIcon,
+      this.anSuffixIcon,
+      required this.keyInputType});
 
   final TextEditingController anController;
   final String returnText;
@@ -30,7 +29,6 @@ class TheTextFormField extends StatelessWidget {
         }
         return null;
       },
-      
       keyboardType: keyInputType,
       controller: anController,
       cursorColor: Colors.black,
@@ -39,6 +37,7 @@ class TheTextFormField extends StatelessWidget {
         prefixIcon: anPrefixIcon,
         suffixIcon: anSuffixIcon,
         labelText: anLabelText,
+        fillColor: kGrey,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
           borderSide: const BorderSide(

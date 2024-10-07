@@ -69,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                               imageWidth: kheight.width * 0.5,
                               anProductId:
                                   state.fullProducts[index].id.toString(),
-                              anOnPressed: () {
+                              anOnPressed: () async {
                                 Navigator.push(
                                   context,
                                   CupertinoPageRoute(

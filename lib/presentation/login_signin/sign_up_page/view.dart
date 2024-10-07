@@ -12,6 +12,7 @@ class SignUpPage extends StatelessWidget {
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirPasswordController = TextEditingController();
   final userNameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
@@ -111,7 +112,7 @@ class SignUpPage extends StatelessWidget {
                               ),
                             ),
                             child: TheTextFormField(
-                              anController: passwordController,
+                              anController: confirPasswordController,
                               returnText: "Password required",
                               anLabelText: "confirm password",
                               isObscure: false,

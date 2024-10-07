@@ -8,6 +8,7 @@ import 'package:reciprocal_task/presentation/login_signin/forgot_password/view.d
 import 'package:reciprocal_task/presentation/login_signin/sign_up_page/view.dart';
 import 'package:reciprocal_task/presentation/login_signin/widgets/button_widget.dart';
 import 'package:reciprocal_task/presentation/login_signin/widgets/text_form.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -110,7 +111,8 @@ class LoginPage extends StatelessWidget {
                       passwordController: passwordController,
                       anOnPressed: () async {
                         if (forFormKey.currentState!.validate()) {
-                          await FirebaseAuthMethods(anFireAuth: FirebaseAuth.instance)
+                          await FirebaseAuthMethods(
+                                  anFireAuth: FirebaseAuth.instance)
                               .loginWithEmailPassword(
                             anEmail: emailController.text,
                             anPassword: passwordController.text,
@@ -131,7 +133,7 @@ class LoginPage extends StatelessWidget {
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).push(
-                           CupertinoPageRoute(
+                            CupertinoPageRoute(
                               builder: (context) => SignUpPage(),
                             ),
                           );

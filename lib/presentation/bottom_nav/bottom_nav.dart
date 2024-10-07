@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reciprocal_task/appliation/bottom_nav/bottom_nav_index_bloc.dart';
 import 'package:reciprocal_task/constants/colors.dart';
-import 'package:reciprocal_task/presentation/cart_screen/cart_screen.dart';
+import 'package:reciprocal_task/presentation/cart/cart_screen.dart';
 import 'package:reciprocal_task/presentation/home_screen/view.dart';
 import 'package:reciprocal_task/presentation/orders_screen/view.dart';
 import 'package:reciprocal_task/presentation/profile_screeen/view.dart';
@@ -20,9 +20,9 @@ class BottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screens = [
-      HomeScreen(),
-      const CartScreen(),
-      const OrdersScreen(),
+      const HomeScreen(),
+      CartScreen(),
+       OrdersScreen(),
       const ProfileScreen(),
     ];
 
@@ -46,6 +46,7 @@ class BottomNav extends StatelessWidget {
             currentIndex = state.currentIndex;
           }
           return BottomNavigationBar(
+            
             selectedItemColor: kBlue,
             unselectedItemColor: kBlack,
             backgroundColor: kGrey200,

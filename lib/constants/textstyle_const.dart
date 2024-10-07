@@ -35,3 +35,6 @@ const kGreyItalicText = TextStyle(
 
 const kTitleText =
     TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: kBlack);
+
+const kTitleNonBoldText = TextStyle(fontSize: 22, color: kBlack);
+const kSubTextNonBold = TextStyle(fontSize: 18, color: kBlack);
