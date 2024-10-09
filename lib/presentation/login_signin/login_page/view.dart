@@ -8,7 +8,6 @@ import 'package:reciprocal_task/presentation/login_signin/forgot_password/view.d
 import 'package:reciprocal_task/presentation/login_signin/sign_up_page/view.dart';
 import 'package:reciprocal_task/presentation/login_signin/widgets/button_widget.dart';
 import 'package:reciprocal_task/presentation/login_signin/widgets/text_form.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});

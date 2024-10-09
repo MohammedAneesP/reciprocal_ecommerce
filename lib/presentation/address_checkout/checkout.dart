@@ -143,14 +143,17 @@ class Checkout extends StatelessWidget {
                                     await AddingeOrders().addingorders(
                                         anMap: toOrders,
                                         anEmail: firename!.email.toString());
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return const Center(
-                                          child: CircularProgressIndicator(),
-                                        );
-                                      },
-                                    );
+                                    if (context.mounted) {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return const Center(
+                                            child: CircularProgressIndicator(),
+                                          );
+                                        },
+                                      );
+                                    }
+
                                     await Future.delayed(
                                         const Duration(seconds: 1));
                                     if (context.mounted) {

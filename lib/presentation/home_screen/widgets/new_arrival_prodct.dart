@@ -19,11 +19,10 @@ class NewArrivalProduct extends StatelessWidget {
     final kHeight = MediaQuery.sizeOf(context);
     final kWidth = MediaQuery.sizeOf(context);
     final screenSize = MediaQuery.of(context).size.height;
-    double blueSize = screenSize < 750 ? 15 : 17;
+    
     double titleSize = screenSize < 750 ? 18 : 22;
     double noBoldSize = screenSize < 750 ? 17 : 20;
-    final kBlueText = TextStyle(
-        color: kBlue, fontSize: blueSize, fontWeight: FontWeight.w500);
+    
     final kTitleText = TextStyle(
         fontWeight: FontWeight.bold, fontSize: titleSize, color: kBlack);
     final kNonBoldBigText = TextStyle(

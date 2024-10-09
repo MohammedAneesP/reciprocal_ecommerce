@@ -23,13 +23,6 @@ class CartListingBloc extends Bloc<CartListingEvent, CartListingState> {
             return emit(GetCart(
                 cartProducts: const {}, errorMessage: "nothing in the cart"));
           } else {
-            List<dynamic> mapToList = [];
-            List<Products> productList = theData.entries
-                .map((element) => Products.fromJson(element.value))
-                .toList();
-
-
-
             return emit(GetCart(cartProducts: theData, errorMessage: ""));
           }
         } else {
@@ -104,6 +97,5 @@ class CartListingBloc extends Bloc<CartListingEvent, CartListingState> {
         }
       },
     );
-
   }
 }

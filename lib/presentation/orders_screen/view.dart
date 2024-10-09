@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:lottie/lottie.dart';
 import 'package:reciprocal_task/appliation/orders/orders_bloc.dart';
 import 'package:reciprocal_task/constants/colors.dart';
 import 'package:reciprocal_task/constants/textstyle_const.dart';
@@ -46,7 +45,7 @@ class OrdersScreen extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               centerTitle: true,
-              title: Text("MY ORDERS",style: kTitleText,),
+              title: const Text("MY ORDERS",style: kTitleText,),
             ),
             body: ListView.separated(
                 itemBuilder: (context, index) {
@@ -54,8 +53,7 @@ class OrdersScreen extends StatelessWidget {
                       state.allorders[index]["date and time"].toString());
                   String formattedDate =
                       DateFormat('yyyy-MM-dd').format(dateAndTime);
-                  String formattedTime =
-                      DateFormat('HH:mm:ss').format(dateAndTime);
+
                   final anStaus = status[random.nextInt(status.length)];
 
                   return Padding(

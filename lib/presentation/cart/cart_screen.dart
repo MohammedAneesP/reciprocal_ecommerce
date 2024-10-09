@@ -72,11 +72,7 @@ class CartScreen extends StatelessWidget {
             updateTotalPrice();
             return Scaffold(
               appBar: AppBar(
-                leading: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: const Icon(Icons.arrow_back_outlined)),
+                automaticallyImplyLeading: false,
                 centerTitle: true,
                 title: const Text(
                   "CART",
