@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reciprocal_task/appliation/show_products/show_all_products_bloc.dart';
+import 'package:reciprocal_task/domain/services/firebase_auth.dart';
 import 'package:reciprocal_task/presentation/home_screen/widgets/all_products.dart';
 import 'package:reciprocal_task/presentation/home_screen/widgets/carousal_widget.dart';
 import 'package:reciprocal_task/presentation/home_screen/widgets/new_arrival.dart';
@@ -20,6 +21,35 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+              tooltip: "Logout",
+              onPressed: () async {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    actions: [
+                      TextButton(
+                          onPressed: () async {
+                            FirebaseAuthMethods(
+                                    anFireAuth: FirebaseAuth.instance)
+                                .logOut(context: context);
+                            Navigator.pop(context);
+                          },
+                          child: const Text("Yes")),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text("no"))
+                    ],
+                    title: const Text("Do you want to log out"),
+                    content: const Text("are you sure..?"),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.logout))
+        ],
         title: const Text("My Shoppie"),
       ),
       body: CustomScrollView(

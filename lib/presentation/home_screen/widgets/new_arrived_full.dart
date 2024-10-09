@@ -1,8 +1,9 @@
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reciprocal_task/appliation/show_products/show_all_products_bloc.dart';
 import 'package:reciprocal_task/presentation/home_screen/widgets/new_arrival_prodct.dart';
+import 'package:reciprocal_task/presentation/product_view/view.dart';
 
 class NewArrivedFull extends StatelessWidget {
   const NewArrivedFull({
@@ -24,9 +25,21 @@ class NewArrivedFull extends StatelessWidget {
             ),
           );
         } else if (state is ShowFullProducts) {
-          return NewArrivalProduct(
-              product: state.fullProducts[6],
-              productName: state.fullProducts[6].title);
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                CupertinoPageRoute(
+                  builder: (context) => ProductView(
+                    anProduct: state.fullProducts[6],
+                  ),
+                ),
+              );
+            },
+            child: NewArrivalProduct(
+                product: state.fullProducts[6],
+                productName: state.fullProducts[6].title),
+          );
         } else {
           return const Center(
             child: Text("Something went wrong"),

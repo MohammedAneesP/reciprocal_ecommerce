@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:reciprocal_task/constants/colors.dart';
@@ -58,6 +60,14 @@ class FirebaseAuthMethods {
         anSnackBarFunc(
             context: context, aText: e.message.toString(), anColor: kRed);
       }
+    }
+  }
+
+  Future<void> logOut({required BuildContext context}) async {
+    try {
+      await anFireAuth.signOut();
+    } on FirebaseAuthException catch (e) {
+      log(e.message.toString());
     }
   }
 

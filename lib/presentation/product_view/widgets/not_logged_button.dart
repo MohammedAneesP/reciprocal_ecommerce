@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:reciprocal_task/constants/textstyle_const.dart';
@@ -43,6 +42,7 @@ class NotLoggedInButton extends StatelessWidget {
                     ),
                     child: const Text('Go to Sign in'),
                     onPressed: () {
+                      Navigator.pop(context);
                       Navigator.push(
                         context,
                         CupertinoPageRoute(

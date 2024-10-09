@@ -8,24 +8,18 @@ class ProductGridTile extends StatelessWidget {
     super.key,
     required this.anProductImg,
     required this.textProducts,
-    
-    
     required this.textPrice,
     required this.imageHeight,
     required this.imageWidth,
-    
     required this.anProductId,
     required this.anOnPressed,
   });
-  
-  
+
   final double imageHeight;
   final String anProductImg;
   final String textProducts;
-  
   final String textPrice;
   final double imageWidth;
-
   final String anProductId;
   final VoidCallback anOnPressed;
 
@@ -35,7 +29,6 @@ class ProductGridTile extends StatelessWidget {
     return GestureDetector(
       onTap: anOnPressed,
       child: Container(
-        
         decoration: BoxDecoration(
           color: kWhite,
           borderRadius: BorderRadius.circular(
@@ -47,7 +40,6 @@ class ProductGridTile extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             
               CachedNetworkImage(
                 imageUrl: anProductImg,
                 placeholder: (context, url) =>
@@ -76,11 +68,10 @@ class ProductGridTile extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      
-                       SizedBox(height: kheight.height * 0.04),
+                      SizedBox(height: kheight.height * 0.04),
                       Text(textProducts, style: kHeadingMedText),
-                       SizedBox(height: kheight.height * 0.01),
-                      Text("₹ $textPrice", style: kSubTitleText),
+                      SizedBox(height: kheight.height * 0.01),
+                      Text("\$ $textPrice", style: kSubTitleText),
                     ],
                   ),
                 ],

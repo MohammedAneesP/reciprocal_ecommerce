@@ -6,7 +6,6 @@ import 'package:reciprocal_task/appliation/cart_listing/cart_listing_bloc.dart';
 import 'package:reciprocal_task/appliation/orders/orders_bloc.dart';
 import 'package:reciprocal_task/appliation/show_products/show_all_products_bloc.dart';
 import 'package:reciprocal_task/firebase_options.dart';
-import 'package:reciprocal_task/presentation/address_checkout/checkout.dart';
 import 'package:reciprocal_task/presentation/splash_screen/view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,7 +14,7 @@ int? isViewed;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  SharedPreferences preference = await SharedPreferences.getInstance();
+  SharedPreferences preference = await SharedPreferences.getInstance(); // using shared preference to ensure the user has opened and navigated to home screen, so dont have to show landing page again
   isViewed = preference.getInt("Landed");
   runApp(const MyApp());
 }

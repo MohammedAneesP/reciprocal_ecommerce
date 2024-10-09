@@ -33,13 +33,13 @@ class AddingTocart {
           await FirebaseFirestore.instance
               .collection("cart")
               .doc(anEmail)
-              .set(forCart);
+              .set(forCart); // if cart already, fetch the existing value and adding the new value with it
         }
       } else {
         await FirebaseFirestore.instance
             .collection("cart")
             .doc(anEmail)
-            .set({productId: toMap});
+            .set({productId: toMap}); //if no cart section exists in database adding cart as new collection
       }
     } catch (e) {
       log(e.toString());

@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> goto() async {
     await Future.delayed(const Duration(seconds: 3));
-    isViewed != 0 ? toLanding() : toHome();
+    isViewed != 0 ? toLanding() : toHome(); // checking if user is visited once before
   }
 
   void toLanding() {

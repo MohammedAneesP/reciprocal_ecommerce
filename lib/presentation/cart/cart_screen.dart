@@ -1,16 +1,12 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reciprocal_task/appliation/cart_listing/cart_listing_bloc.dart';
 import 'package:reciprocal_task/constants/colors.dart';
 import 'package:reciprocal_task/constants/textstyle_const.dart';
 import 'package:reciprocal_task/domain/models/product_model.dart';
-import 'package:reciprocal_task/presentation/address_checkout/checkout.dart';
+import 'package:reciprocal_task/presentation/cart/widgets/cart_bottom.dart';
 import 'package:reciprocal_task/presentation/cart/widgets/cart_decrement.dart';
-
 import 'package:reciprocal_task/presentation/cart/widgets/cart_increment.dart';
 import 'package:reciprocal_task/presentation/cart/widgets/no_product_view.dart';
 import 'package:reciprocal_task/presentation/cart/widgets/cart_image.dart';
@@ -40,6 +36,13 @@ class CartScreen extends StatelessWidget {
     totalPrice.value = sum;
   }
 
+  void listOfPricesinitialValues({required List<dynamic> anList}) {
+    for (var i = 0; i < anList.length; i++) {
+      double thePrices = anList[i].price;
+      listOfPrices.add(ValueNotifier(thePrices.toInt()));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final kheight = MediaQuery.sizeOf(context);
@@ -64,14 +67,16 @@ class CartScreen extends StatelessWidget {
               toSaveIn[element.id.toString()] = toAdd.toJson();
             }
 
-            for (var i = 0; i < state.cartProducts.length; i++) {
-              double thePrices = state.cartProducts[i].price;
-              listOfPrices.add(ValueNotifier(thePrices.toInt()));
-            }
+            listOfPricesinitialValues(anList: state.cartProducts);
 
             updateTotalPrice();
             return Scaffold(
               appBar: AppBar(
+                leading: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(Icons.arrow_back_outlined)),
                 centerTitle: true,
                 title: const Text(
                   "CART",
@@ -235,55 +240,8 @@ class CartScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              bottomSheet: SizedBox(
-                height: kheight.height * 0.15,
-                width: kheight.width,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text("Total Cost", style: kTitleNonBoldText),
-                          ValueListenableBuilder(
-                            valueListenable: totalPrice,
-                            builder: (context, value, child) {
-                              return Text(
-                                "\$ ${totalPrice.value}",
-                                style: kTitleNonBoldText,
-                              );
-                            },
-                          ),
-                        ],
-                      ),
-                      const Spacer(),
-                      ElevatedButton(
-                        onPressed: () async {
-                          Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                builder: (context) => Checkout(
-                                    products: toSaveIn,
-                                    totalCost: totalPrice.value),
-                              ));
-                        },
-                        style: ButtonStyle(
-                          backgroundColor:
-                              const WidgetStatePropertyAll(Colors.amberAccent),
-                          minimumSize: WidgetStatePropertyAll(
-                            Size(
-                              kheight.width,
-                              kheight.height * 0.07,
-                            ),
-                          ),
-                        ),
-                        child: const Text("Buy Now"),
-                      )
-                    ],
-                  ),
-                ),
-              ),
+              bottomSheet: CartBottomSheet(
+                  kheight: kheight, totalPrice: totalPrice, toSaveIn: toSaveIn),
             );
           }
         } else {

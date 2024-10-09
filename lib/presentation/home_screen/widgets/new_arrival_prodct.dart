@@ -53,7 +53,7 @@ class NewArrivalProduct extends StatelessWidget {
                   const SizedBox(height: 5),
                   Text(productName, style: kTitleText),
                   const SizedBox(height: 5),
-                  Text("₹ ${product.price}", style: kNonBoldBigText)
+                  Text("\$ ${product.price}", style: kNonBoldBigText)
                 ],
               ),
             ),

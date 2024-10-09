@@ -5,20 +5,14 @@ import 'package:reciprocal_task/appliation/cart_listing/cart_listing_bloc.dart';
 import 'package:reciprocal_task/constants/colors.dart';
 import 'package:reciprocal_task/constants/textstyle_const.dart';
 import 'package:reciprocal_task/presentation/product_view/widgets/go_to_cart.dart';
-
 import 'package:reciprocal_task/presentation/product_view/widgets/image_section.dart';
 import 'package:reciprocal_task/presentation/product_view/widgets/not_logged_button.dart';
 import 'package:reciprocal_task/repositories/to_cart_firebase/adding_tocart.dart';
 
-class ProductView extends StatefulWidget {
+class ProductView extends StatelessWidget {
   final dynamic anProduct;
-  const ProductView({super.key, required this.anProduct});
+   ProductView({super.key, required this.anProduct});
 
-  @override
-  State<ProductView> createState() => _ProductViewState();
-}
-
-class _ProductViewState extends State<ProductView> {
   final firename = FirebaseAuth.instance.currentUser;
 
   void callingBloc(BuildContext context) {
@@ -29,13 +23,8 @@ class _ProductViewState extends State<ProductView> {
   }
 
   @override
-  void initState() {
-    callingBloc(context);
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    callingBloc(context);
     final kheight = MediaQuery.sizeOf(context);
 
     return Scaffold(
@@ -43,7 +32,7 @@ class _ProductViewState extends State<ProductView> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              ImageSection(anProduct: widget.anProduct, kheight: kheight),
+              ImageSection(anProduct: anProduct, kheight: kheight),
               Container(
                 width: kheight.width,
                 height: kheight.height * .7,
@@ -58,18 +47,18 @@ class _ProductViewState extends State<ProductView> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: kheight.height * 0.03),
-                      Text("${widget.anProduct.category}",
+                      Text("${anProduct.category}",
                           style: kBlueThinText),
                       SizedBox(height: kheight.height * 0.02),
                       Text(
-                        "\$ ${widget.anProduct.price}",
+                        "\$ ${anProduct.price}",
                         style: kHeadingMedText,
                       ),
                       SizedBox(height: kheight.height * 0.02),
-                      Text(widget.anProduct.title, style: kHeadingText),
+                      Text(anProduct.title, style: kHeadingText),
                       SizedBox(height: kheight.height * 0.03),
                       Text(
-                        widget.anProduct.description,
+                        anProduct.description,
                         style: kGreySmallText,
                       ),
                       const Spacer(),
@@ -91,7 +80,7 @@ class _ProductViewState extends State<ProductView> {
               children: [
                 const Spacer(),
                 const Text("Price", style: kGreyItalicText),
-                Text("\$${widget.anProduct.price}", style: kTitleText),
+                Text("\$${anProduct.price}", style: kTitleText),
                 const Spacer(),
               ],
             ),
@@ -103,15 +92,15 @@ class _ProductViewState extends State<ProductView> {
                   builder: (context, state) {
                     if (state is GetCart) {
                       if (state.cartProducts
-                          .containsKey(widget.anProduct.id.toString())) {
+                          .containsKey(anProduct.id.toString())) {
                         return GotoCartButton(kheight: kheight);
                       } else {
                         return ElevatedButton(
                           onPressed: () async {
                             await AddingTocart().addTocart(
-                                product: widget.anProduct,
+                                product: anProduct,
                                 anEmail: firename!.email.toString(),
-                                productId: widget.anProduct.id.toString());
+                                productId: anProduct.id.toString());
                             if (context.mounted) {
                               BlocProvider.of<CartListingBloc>(context).add(
                                   FetchCart(
